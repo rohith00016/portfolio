@@ -1,22 +1,5 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import {
-  TbBrandReact,
-  TbBrandRedux,
-  TbBrandTailwind,
-  TbBrandJavascript,
-  TbBrandHtml5,
-} from "react-icons/tb";
-import {
-  TbBrandCss3,
-  TbBrandNodejs,
-  TbBrandMongodb,
-  TbBrandMysql,
-  TbBrandGit,
-  TbBrandGithub,
-  TbBrandSocketIo,
-} from "react-icons/tb";
-
 import { useInView } from "react-intersection-observer";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -84,35 +67,35 @@ const additionalSkills = [
   "Database Design",
 ];
 
-// const techStackIcons = [
-//   { icon: "/public/React.svg", name: "React" },
-//   { icon: "/public/Redux.svg", name: "Redux" },
-//   { icon: "/public/Tailwind.svg", name: "Tailwind" },
-//   { icon: "/public/JavaScript.svg", name: "JavaScript" },
-//   { icon: "/public/HTML5.svg", name: "HTML5" },
-//   { icon: "/public/CSS3.svg", name: "CSS3" },
-//   { icon: "/public/Node.js.svg", name: "Node.js" },
-//   { icon: "/public/MongoDB.svg", name: "MongoDB" },
-//   { icon: "/public/MySQL.svg", name: "MySQL" },
-//   { icon: "/public/Socket.io.svg", name: "Socket.io" },
-//   { icon: "/public/Git.svg", name: "Git" },
-//   { icon: "/public/GitHub.svg", name: "GitHub" },
-// ];
-
 const techStackIcons = [
-  { icon: <TbBrandReact />, name: "React" },
-  { icon: <TbBrandRedux />, name: "Redux" },
-  { icon: <TbBrandTailwind />, name: "Tailwind" },
-  { icon: <TbBrandJavascript />, name: "JavaScript" },
-  { icon: <TbBrandHtml5 />, name: "HTML5" },
-  { icon: <TbBrandCss3 />, name: "CSS3" },
-  { icon: <TbBrandNodejs />, name: "Node.js" },
-  { icon: <TbBrandMongodb />, name: "MongoDB" },
-  { icon: <TbBrandMysql />, name: "MySQL" },
-  { icon: <TbBrandSocketIo />, name: "Socket.io" },
-  { icon: <TbBrandGit />, name: "Git" },
-  { icon: <TbBrandGithub />, name: "GitHub" },
+  { icon: "/public/React.svg", name: "React" },
+  { icon: "/public/Redux.svg", name: "Redux" },
+  { icon: "/public/Tailwind.svg", name: "Tailwind" },
+  { icon: "/public/JavaScript.svg", name: "JavaScript" },
+  { icon: "/public/HTML5.svg", name: "HTML5" },
+  { icon: "/public/CSS3.svg", name: "CSS3" },
+  { icon: "/public/Node.js.svg", name: "Node.js" },
+  { icon: "/public/MongoDB.svg", name: "MongoDB" },
+  { icon: "/public/MySQL.svg", name: "MySQL" },
+  { icon: "/public/Socket.io.svg", name: "Socket.io" },
+  { icon: "/public/Git.svg", name: "Git" },
+  { icon: "/public/GitHub.svg", name: "GitHub" },
 ];
+
+//grayscale icons
+// const techStackIcons = [
+//   "react",
+//   "redux",
+//   "tailwindcss",
+//   "javascript",
+//   "html5",
+//   "css3",
+//   "nodejs",
+//   "mongodb",
+//   "mysql",
+//   "git",
+//   "github",
+// ];
 
 export function SkillsSection() {
   const [ref, inView] = useInView({
@@ -156,19 +139,25 @@ export function SkillsSection() {
             continuous learning
           </p>
         </motion.div>
-        <div className="grid grid-cols-4 lg:grid-cols-12 gap-8 mb-12">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-8 lg:grid-cols-12 gap-8 mb-12">
           {techStackIcons.map((icon, index) => (
-            <div
+            <motion.div
               key={index}
-              className="flex flex-col justify-center items-center  h-32 w-32"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+              }}
+              className="flex flex-col justify-center items-center"
             >
-              <div className="text-5xl rounded-lg p-2 bg-muted/40 dark:bg-muted/30 shadow-sm border border-border/20">
-                <span className="text-foreground/70 dark:text-foreground/60">
-                  {icon.icon}
-                </span>
-              </div>
-              <p className="text-sm text-muted-foreground mt-2">{icon.name}</p>
-            </div>
+              <Card className="w-20 h-20 rounded-full flex items-center justify-center mb-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <img src={icon.icon} alt={icon.name} className="w-10 h-10" />
+              </Card>
+              <p className="text-sm text-muted-foreground text-center font-medium">
+                {icon.name}
+              </p>
+            </motion.div>
           ))}
         </div>
 
@@ -179,7 +168,7 @@ export function SkillsSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <Card className="p-6 bg-card">
+          <Card className="p-6 bg-card/50 border-2 border-primary/10 shadow-lg hover:shadow-xl transition-all duration-300">
             <div className="text-center mb-6">
               <h3 className="text-xl font-semibold mb-2">
                 Additional Expertise
@@ -218,7 +207,7 @@ export function SkillsSection() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="text-center mt-12"
         >
-          <Card className="p-8 bg-card max-w-3xl mx-auto">
+          <Card className="p-8 max-w-3xl mx-auto bg-card/50 border-2 border-primary/10 shadow-lg hover:shadow-xl transition-all duration-300">
             <div className="flex items-center justify-center mb-4">
               <Palette className="h-8 w-8 text-primary" />
             </div>

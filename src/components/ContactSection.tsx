@@ -53,8 +53,8 @@ export function ContactSection() {
   });
 
   return (
-    <section id="contact" className="py-20 bg-background" ref={ref}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-20 " ref={ref}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -76,7 +76,7 @@ export function ContactSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-6"
           >
-            <Card className="p-6 bg-card">
+            <Card className="p-6 bg-card/50 border-2 border-primary/10 shadow-lg hover:shadow-xl transition-all duration-300">
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-2 bg-primary/10 rounded-lg">
                   <MessageCircle className="h-6 w-6 text-primary" />
@@ -125,7 +125,7 @@ export function ContactSection() {
             </Card>
 
             {/* Location */}
-            <Card className="p-6 bg-card">
+            <Card className="p-6 bg-card/50 border-2 border-primary/10 shadow-lg hover:shadow-xl transition-all duration-300">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 bg-primary/10 rounded-lg">
                   <MapPin className="h-6 w-6 text-primary" />
@@ -153,7 +153,7 @@ export function ContactSection() {
             className="space-y-6"
           >
             {/* Availability */}
-            <Card className="p-6 bg-card">
+            <Card className="p-6 bg-card/50 border-2 border-primary/10 shadow-lg hover:shadow-xl transition-all duration-300">
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-2 bg-success/10 rounded-lg">
                   <Calendar className="h-6 w-6 text-success" />
@@ -201,7 +201,7 @@ export function ContactSection() {
             </Card>
 
             {/* Coffee Chat CTA */}
-            <Card className="p-6 bg-card text-center">
+            <Card className="p-6 bg-card/50 border-2 border-primary/10 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
               <div className="flex items-center justify-center mb-4">
                 <Coffee className="h-8 w-8 text-primary" />
               </div>
@@ -250,7 +250,7 @@ export function ContactSection() {
           className="text-center mt-16 pt-8 border-t border-border"
         >
           <p className="text-muted-foreground">
-            Built using React, TypeScript, Tailwind CSS and Shadcn
+            Built with ❤️ using React, TypeScript, and Tailwind CSS
           </p>
           <p className="text-sm text-muted-foreground mt-2">
             © 2024 Rohith M. All rights reserved.

@@ -24,8 +24,8 @@ export function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-20 bg-background" ref={ref}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-20  " ref={ref}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -46,7 +46,7 @@ export function AboutSection() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <Card className="p-6 bg-card">
+            <Card className="p-6 bg-card/50 border-2 border-primary/10 shadow-lg hover:shadow-xl transition-all duration-300">
               <div className="flex items-center mb-4">
                 <GraduationCap className="h-6 w-6 mr-3 text-primary" />
                 <h3 className="text-xl font-semibold">Education</h3>
@@ -83,7 +83,7 @@ export function AboutSection() {
             className="space-y-6"
           >
             {/* Achievements */}
-            <Card className="p-6 bg-card">
+            <Card className="p-6 bg-card/50 border-2 border-primary/10 shadow-lg hover:shadow-xl transition-all duration-300">
               <div className="flex items-center mb-4">
                 <Award className="h-6 w-6 mr-3 text-primary" />
                 <h3 className="text-xl font-semibold">Achievements</h3>
@@ -105,7 +105,7 @@ export function AboutSection() {
             </Card>
 
             {/* Hobbies */}
-            <Card className="p-6 bg-card">
+            <Card className="p-6 bg-card/50 border-2 border-primary/10 shadow-lg hover:shadow-xl transition-all duration-300">
               <h3 className="text-xl font-semibold mb-4">
                 Hobbies & Interests
               </h3>

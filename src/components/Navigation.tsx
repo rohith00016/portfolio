@@ -143,7 +143,7 @@ export function Navigation() {
                 <motion.button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className={`block px-3 py-2 text-base font-medium w-full text-left transition-all duration-300 ease-in-out rounded-md ${
+                  className={`block px-3 py-2 text-base font-medium w-full text-left transition-all duration-300 ease-in-out ${
                     activeSection === item.href.substring(1)
                       ? "text-primary bg-muted"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted/50"

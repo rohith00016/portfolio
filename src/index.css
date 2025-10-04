@@ -1,7 +1,12 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* Import modern fonts for the portfolio */
 
+@custom-variant dark (&:is(.dark *));
 
 /* Modern minimalist design system with neutral palette and smooth animations */
 
