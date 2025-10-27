@@ -79,7 +79,7 @@ export function HeroSection() {
             {/* Name and introduction */}
             <div className="space-y-4">
               <motion.h1
-                className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -135,7 +135,7 @@ export function HeroSection() {
                 </a>
               </div>
               <div className="flex items-center gap-2">
-               <Linkedin className="h-4 w-4" /> 
+                <Linkedin className="h-4 w-4" />
                 <a
                   href="https://linkedin.com/in/rohithM"
                   target="_blank"

@@ -32,7 +32,9 @@ export function AboutSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 tracking-tight">
+            About Me
+          </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             A passionate full-stack developer dedicated to creating innovative
             solutions and mentoring the next generation of developers.
