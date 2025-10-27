@@ -34,11 +34,14 @@ function Badge({
   VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
   const Comp = asChild ? Slot : "span";
 
+  // Filter out any invalid HTML attributes
+  const { variantColor, ...validProps } = props as any;
+
   return (
     <Comp
       data-slot="badge"
       className={cn(badgeVariants({ variant }), className)}
-      {...props}
+      {...validProps}
     />
   );
 }

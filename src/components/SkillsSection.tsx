@@ -103,7 +103,7 @@ export function SkillsSection() {
     threshold: 0.1,
   });
 
-  const [animatedValues, setAnimatedValues] = useState<{
+  const [, setAnimatedValues] = useState<{
     [key: string]: number;
   }>({});
   useEffect(() => {
@@ -151,7 +151,7 @@ export function SkillsSection() {
               }}
               className="flex flex-col justify-center items-center"
             >
-              <Card className="w-20 h-20 rounded-full flex items-center justify-center mb-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <Card className="w-20 h-20 rounded-full flex items-center justify-center mb-3 border border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <img src={icon.icon} alt={icon.name} className="w-10 h-10" />
               </Card>
               <p className="text-sm text-muted-foreground text-center font-medium">
@@ -168,7 +168,7 @@ export function SkillsSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <Card className="p-6 bg-card/50 border-2 border-primary/10 shadow-lg hover:shadow-xl transition-all duration-300">
+          <Card className="p-6 bg-card/50 border border-border/30 shadow-lg hover:shadow-xl transition-all duration-300">
             <div className="text-center mb-6">
               <h3 className="text-xl font-semibold mb-2">
                 Additional Expertise
@@ -191,7 +191,7 @@ export function SkillsSection() {
                 >
                   <Badge
                     variant="outline"
-                    className="transition-all duration-300 ease-in-out hover:bg-primary hover:text-primary-foreground text-sm py-2 px-4"
+                    className="transition-all duration-300 ease-in-out hover:bg-primary hover:text-primary-foreground text-sm py-2 px-4 border border-border/90"
                   >
                     {skill}
                   </Badge>
@@ -207,7 +207,7 @@ export function SkillsSection() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="text-center mt-12"
         >
-          <Card className="p-8 max-w-3xl mx-auto bg-card/50 border-2 border-primary/10 shadow-lg hover:shadow-xl transition-all duration-300">
+          <Card className="p-8 max-w-3xl mx-auto bg-card/50 border border-border/30 shadow-lg hover:shadow-xl transition-all duration-300">
             <div className="flex items-center justify-center mb-4">
               <Palette className="h-8 w-8 text-primary" />
             </div>

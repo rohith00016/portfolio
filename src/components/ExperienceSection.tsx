@@ -96,7 +96,7 @@ export function ExperienceSection() {
                       <Badge
                         key={skill}
                         variant="outline"
-                        className="text-xs px-2 py-1"
+                        className="text-xs px-2 py-1 border border-border/90"
                       >
                         {skill}
                       </Badge>
@@ -113,7 +113,7 @@ export function ExperienceSection() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <Card className="p-6 h-full flex flex-col justify-center bg-card/50 border-2 border-primary/10 shadow-lg hover:shadow-xl transition-all duration-300">
+            <Card className="p-6 h-full flex flex-col justify-center bg-card/50 border border-border/30 shadow-lg hover:shadow-xl transition-all duration-300">
               <div className="flex items-center justify-center mb-4">
                 <Lightbulb className="h-8 w-8 text-primary" />
               </div>

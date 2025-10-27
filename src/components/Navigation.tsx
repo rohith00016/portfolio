@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ThemeToggle } from "./ThemeToggle";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -79,7 +78,7 @@ export function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="ml-10 flex items-baseline gap-16">
               {navItems.map((item, index) => (
                 <motion.button
                   key={item.name}
@@ -102,7 +101,6 @@ export function Navigation() {
 
           {/* Right side actions */}
           <div className="flex items-center space-x-4">
-            <ThemeToggle />
 
             {/* Mobile menu button */}
             <div className="md:hidden">
