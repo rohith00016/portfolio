@@ -1,15 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import {
-  ArrowDown,
-  Download,
-  Github,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-} from "lucide-react";
+import { Download, Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import Typewriter from "typewriter-effect";
 
 export function HeroSection() {
@@ -21,11 +13,7 @@ export function HeroSection() {
 
   const handleDownloadResume = () => {
     // Placeholder for resume download functionality
-    window.open("/resume.pdf", "_blank");
-  };
-
-  const scrollToAbout = () => {
-    document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" });
+    window.open("/rohith2025.pdf", "_blank");
   };
 
   return (
@@ -64,17 +52,17 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 50 }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col lg:flex-row items-center justify-between gap-12"
+          className="flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-8 lg:gap-12 w-full"
         >
           {/* Profile Picture */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="order-2 lg:order-1 flex-shrink-0"
+            className="order-1 lg:order-1 flex-shrink-0"
           >
             <div className="relative">
-              <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
+              <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
                 <img
                   src="/dp.jpg"
                   alt="Rohith M - Profile Picture"
@@ -87,7 +75,7 @@ export function HeroSection() {
           </motion.div>
 
           {/* Content */}
-          <div className="order-1 lg:order-2 text-center lg:text-left space-y-8 flex-1">
+          <div className="order-2 lg:order-2 text-center lg:text-left space-y-6 lg:space-y-8 flex-1 max-w-2xl lg:max-w-none">
             {/* Name and introduction */}
             <div className="space-y-4">
               <motion.h1
@@ -131,7 +119,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-muted-foreground text-sm md:text-base"
+              className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-muted-foreground text-sm md:text-base"
             >
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
@@ -157,7 +145,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.0 }}
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 w-full"
             >
               <Button
                 onClick={handleDownloadResume}
@@ -205,7 +193,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
-              className="max-w-2xl mx-auto lg:mx-0 text-muted-foreground text-lg leading-relaxed"
+              className="max-w-2xl mx-auto lg:mx-0 text-muted-foreground text-base sm:text-lg leading-relaxed text-center lg:text-left"
             >
               Seeking a stable, profitable company to leverage my talents, gain
               valuable experience, and contribute to enhancing its reputation in
@@ -213,25 +201,6 @@ export function HeroSection() {
             </motion.p>
           </div>
         </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.button
-          onClick={scrollToAbout}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          whileHover={{ scale: 1.1 }}
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center text-muted-foreground hover:text-primary transition-all duration-300 ease-in-out"
-          >
-            <span className="text-sm mb-2">Scroll to explore</span>
-            <ArrowDown className="h-5 w-5" />
-          </motion.div>
-        </motion.button>
       </div>
     </section>
   );
