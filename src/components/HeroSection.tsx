@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Download, Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Download, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import Typewriter from "typewriter-effect";
 
 export function HeroSection() {
@@ -135,8 +135,14 @@ export function HeroSection() {
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
-                <span>+91 6381800016</span>
+               <Linkedin className="h-4 w-4" /> 
+                <a
+                  href="https://linkedin.com/in/rohithM"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Rohith M
+                </a>
               </div>
             </motion.div>
 

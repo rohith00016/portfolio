@@ -68,18 +68,18 @@ const additionalSkills = [
 ];
 
 const techStackIcons = [
-  { icon: "/public/React.svg", name: "React" },
-  { icon: "/public/Redux.svg", name: "Redux" },
-  { icon: "/public/Tailwind.svg", name: "Tailwind" },
-  { icon: "/public/JavaScript.svg", name: "JavaScript" },
-  { icon: "/public/HTML5.svg", name: "HTML5" },
-  { icon: "/public/CSS3.svg", name: "CSS3" },
-  { icon: "/public/Node.js.svg", name: "Node.js" },
-  { icon: "/public/MongoDB.svg", name: "MongoDB" },
-  { icon: "/public/MySQL.svg", name: "MySQL" },
-  { icon: "/public/Socket.io.svg", name: "Socket.io" },
-  { icon: "/public/Git.svg", name: "Git" },
-  { icon: "/public/GitHub.svg", name: "GitHub" },
+  { icon: "/React.svg", name: "React" },
+  { icon: "/Redux.svg", name: "Redux" },
+  { icon: "/Tailwind.svg", name: "Tailwind" },
+  { icon: "/JavaScript.svg", name: "JavaScript" },
+  { icon: "/HTML5.svg", name: "HTML5" },
+  { icon: "/CSS3.svg", name: "CSS3" },
+  { icon: "/Node.js.svg", name: "Node.js" },
+  { icon: "/MongoDB.svg", name: "MongoDB" },
+  { icon: "/MySQL.svg", name: "MySQL" },
+  { icon: "/Socket.io.svg", name: "Socket.io" },
+  { icon: "/Git.svg", name: "Git" },
+  { icon: "/GitHub.svg", name: "GitHub" },
 ];
 
 //grayscale icons
