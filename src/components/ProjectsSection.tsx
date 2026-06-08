@@ -77,7 +77,7 @@ const projects = [
       github: "#",
     },
     status: "Completed",
-    restricted: false,
+    restricted: true,
     restrictedReason:
       "The application is developed for a company's internal use",
   },
