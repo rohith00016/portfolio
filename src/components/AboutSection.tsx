@@ -1,136 +1,84 @@
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { GraduationCap, Calendar, Award } from "lucide-react";
+import { GlowCard } from "@/components/ui/glow-card";
+import { GraduationCap, Trophy, Heart } from "lucide-react";
+import { SectionHeader } from "@/components/animations/SectionHeader";
+import { RevealItem } from "@/components/animations/AnimatedSection";
+
+const highlights = [
+  "Mentored 600+ learners in MERN stack development",
+  "AI resume evaluator — 90% reduction in manual review",
+  "Delivered system design & production MERN training",
+  "2nd Prize — Web Design Contest, Karpagam Engineering College",
+];
+
+const hobbies = ["Upskilling", "Meditation", "Running", "Music", "Audio Books"];
 
 export function AboutSection() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const achievements = [
-    "Assistant School People Leader (HSC)",
-    "2nd Prize – Web Design Contest, Karpagam Engineering College",
-  ];
-
-  const hobbies = [
-    "Upskilling",
-    "Meditation",
-    "Running",
-    "Music",
-    "Audio Books",
-  ];
-
   return (
-    <section id="about" className="py-20  " ref={ref}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 tracking-tight">
-            About Me
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A passionate full-stack developer dedicated to creating innovative
-            solutions and mentoring the next generation of developers.
-          </p>
-        </motion.div>
+    <section id="about" className="py-24 sm:py-32">
+      <SectionHeader
+        number="01"
+        title="About"
+        subtitle="Engineer at HCL GUVI — building AI tools, shipping real products, and growing the next wave of developers."
+      />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Education Card */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <Card className="p-6 bg-card/50 border border-border/30 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="flex items-center mb-4">
-                <GraduationCap className="h-6 w-6 mr-3 text-primary" />
-                <h3 className="text-xl font-semibold">Education</h3>
+      <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
+        <RevealItem className="md:col-span-4">
+          <GlowCard innerClassName="p-6 sm:p-8 h-full">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2.5 rounded-xl bg-primary/15 text-primary">
+                <Trophy className="h-5 w-5" />
               </div>
-              <div className="space-y-4">
-                <div className="border-l-2 border-primary pl-4">
-                  <h4 className="font-semibold text-lg">
-                    Master of Computer Applications (MCA)
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Kongu Engineering College
-                  </p>
-                  <div className="flex items-center gap-2 mt-2">
-                    <Calendar className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm text-muted-foreground">
-                      2022 - 2024
-                    </span>
-                  </div>
-                  <div className="mt-2">
-                    <Badge variant="secondary" className="font-mono">
-                      CGPA: 8.4
-                    </Badge>
-                  </div>
-                </div>
-              </div>
-            </Card>
-          </motion.div>
+              <h3 className="font-display font-semibold text-lg">Highlights</h3>
+            </div>
+            <ul className="space-y-4">
+              {highlights.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-3 text-muted-foreground"
+                >
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
+                  <span className="leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </GlowCard>
+        </RevealItem>
 
-          {/* Achievements & Hobbies Card */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-6"
-          >
-            {/* Achievements */}
-            <Card className="p-6 bg-card/50 border border-border/30 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="flex items-center mb-4">
-                <Award className="h-6 w-6 mr-3 text-primary" />
-                <h3 className="text-xl font-semibold">Achievements</h3>
+        <RevealItem delay={0.08} className="md:col-span-2">
+          <GlowCard innerClassName="p-6 sm:p-8 h-full flex flex-col">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2.5 rounded-xl bg-white/[0.06] text-foreground">
+                <GraduationCap className="h-5 w-5" />
               </div>
-              <ul className="space-y-3">
-                {achievements.map((achievement, index) => (
-                  <motion.li
-                    key={index}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={inView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                    className="flex items-start"
-                  >
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0" />
-                    <span>{achievement}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </Card>
+              <h3 className="font-display font-semibold text-lg">Education</h3>
+            </div>
+            <p className="font-display font-semibold text-xl">MCA</p>
+            <p className="text-muted-foreground mt-1">Kongu Engineering College</p>
+            <p className="text-sm text-muted-foreground mt-0.5">2022 – 2024</p>
+            <Badge className="mt-auto w-fit bg-primary/15 text-primary border-0 hover:bg-primary/20">
+              CGPA 8.4
+            </Badge>
+          </GlowCard>
+        </RevealItem>
 
-            {/* Hobbies */}
-            <Card className="p-6 bg-card/50 border border-border/30 shadow-lg hover:shadow-xl transition-all duration-300">
-              <h3 className="text-xl font-semibold mb-4">
-                Hobbies & Interests
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {hobbies.map((hobby, index) => (
-                  <motion.div
-                    key={hobby}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={inView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
-                  >
-                    <Badge
-                      variant="outline"
-                      className="transition-all duration-300 ease-in-out hover:bg-primary hover:text-primary-foreground border border-border/90"
-                    >
-                      {hobby}
-                    </Badge>
-                  </motion.div>
-                ))}
+        <RevealItem delay={0.12} className="md:col-span-6">
+          <GlowCard innerClassName="p-6 sm:p-8">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="p-2.5 rounded-xl bg-white/[0.06] text-muted-foreground">
+                <Heart className="h-5 w-5" />
               </div>
-            </Card>
-          </motion.div>
-        </div>
+              <h3 className="font-display font-semibold text-lg">Beyond code</h3>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {hobbies.map((hobby) => (
+                <span key={hobby} className="chip hover:border-primary/30 hover:text-foreground transition-colors">
+                  {hobby}
+                </span>
+              ))}
+            </div>
+          </GlowCard>
+        </RevealItem>
       </div>
     </section>
   );

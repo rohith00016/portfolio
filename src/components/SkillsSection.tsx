@@ -1,228 +1,92 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Database, Cloud, Cpu, Monitor, Palette } from "lucide-react";
+import { GlowCard } from "@/components/ui/glow-card";
+import { SectionHeader } from "@/components/animations/SectionHeader";
+import { RevealItem } from "@/components/animations/AnimatedSection";
 
-const skillCategories = [
+const DEVICON =
+  "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons";
+
+const techIcons = [
+  { src: `${DEVICON}/react/react-original.svg`, label: "React" },
+  { src: `${DEVICON}/typescript/typescript-original.svg`, label: "TypeScript" },
+  { src: `${DEVICON}/redux/redux-original.svg`, label: "Redux" },
+  { src: `${DEVICON}/nodejs/nodejs-original.svg`, label: "Node.js" },
+  { src: `${DEVICON}/express/express-original.svg`, label: "Express" },
+  { src: `${DEVICON}/mongodb/mongodb-original.svg`, label: "MongoDB" },
+  { src: `${DEVICON}/mysql/mysql-original.svg`, label: "MySQL" },
+  { src: `${DEVICON}/redis/redis-original.svg`, label: "Redis" },
+  { src: `${DEVICON}/docker/docker-original.svg`, label: "Docker" },
+  { src: `${DEVICON}/nginx/nginx-original.svg`, label: "NGINX" },
+  { src: `${DEVICON}/git/git-original.svg`, label: "Git" },
+  { src: `${DEVICON}/github/github-original.svg`, label: "GitHub" },
+  { src: `${DEVICON}/html5/html5-original.svg`, label: "HTML5" },
+  { src: `${DEVICON}/css3/css3-original.svg`, label: "CSS3" },
+  { src: `${DEVICON}/tailwindcss/tailwindcss-original.svg`, label: "Tailwind" },
   {
-    title: "Frontend Development",
-    icon: Monitor,
-    color: "text-blue-500",
-    skills: [
-      { name: "ReactJS", level: 90 },
-      { name: "Redux / Context API", level: 85 },
-      { name: "Tailwind CSS", level: 88 },
-      { name: "JavaScript/TypeScript", level: 87 },
-      { name: "HTML5 & CSS3", level: 92 },
-    ],
+    src: `${DEVICON}/amazonwebservices/amazonwebservices-plain-wordmark.svg`,
+    label: "AWS",
   },
-  {
-    title: "Backend Development",
-    icon: Database,
-    color: "text-green-500",
-    skills: [
-      { name: "Node.js", level: 88 },
-      { name: "Express.js", level: 85 },
-      { name: "MongoDB", level: 83 },
-      { name: "MySQL", level: 80 },
-      { name: "Socket.io", level: 82 },
-    ],
-  },
-  {
-    title: "Tools & Technologies",
-    icon: Cpu,
-    color: "text-purple-500",
-    skills: [
-      { name: "Git & GitHub", level: 85 },
-      { name: "REST APIs", level: 88 },
-      { name: "Responsive Design", level: 90 },
-      { name: "Performance Optimization", level: 75 },
-      { name: "Testing & Debugging", level: 80 },
-    ],
-  },
-  {
-    title: "AI & Innovation",
-    icon: Cloud,
-    color: "text-orange-500",
-    skills: [
-      { name: "AI Integration", level: 78 },
-      { name: "RAG Systems", level: 75 },
-      { name: "Chat Applications", level: 85 },
-      { name: "Resume Evaluators", level: 80 },
-      { name: "Problem Solving", level: 92 },
-    ],
-  },
+  { src: `${DEVICON}/socketio/socketio-original.svg`, label: "Socket.io" },
+  { src: `${DEVICON}/google/google-original.svg`, label: "Gemini AI" },
 ];
 
-const additionalSkills = [
-  "Mentoring & Training",
-  "Technical Documentation",
-  "Code Review",
-  "Agile Methodology",
-  "Team Collaboration",
-  "Project Management",
-  "System Architecture",
-  "Database Design",
+const softSkills = [
+  "React Query",
+  "Puppeteer",
+  "Razorpay",
+  "JWT & RBAC",
+  "RAG",
+  "Mentoring",
+  "System Design",
 ];
-
-const techStackIcons = [
-  { icon: "/React.svg", name: "React" },
-  { icon: "/Redux.svg", name: "Redux" },
-  { icon: "/Tailwind.svg", name: "Tailwind" },
-  { icon: "/JavaScript.svg", name: "JavaScript" },
-  { icon: "/HTML5.svg", name: "HTML5" },
-  { icon: "/CSS3.svg", name: "CSS3" },
-  { icon: "/Node.js.svg", name: "Node.js" },
-  { icon: "/MongoDB.svg", name: "MongoDB" },
-  { icon: "/MySQL.svg", name: "MySQL" },
-  { icon: "/Socket.io.svg", name: "Socket.io" },
-  { icon: "/Git.svg", name: "Git" },
-  { icon: "/GitHub.svg", name: "GitHub" },
-];
-
-//grayscale icons
-// const techStackIcons = [
-//   "react",
-//   "redux",
-//   "tailwindcss",
-//   "javascript",
-//   "html5",
-//   "css3",
-//   "nodejs",
-//   "mongodb",
-//   "mysql",
-//   "git",
-//   "github",
-// ];
 
 export function SkillsSection() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const [, setAnimatedValues] = useState<{
-    [key: string]: number;
-  }>({});
-  useEffect(() => {
-    if (inView) {
-      const timer = setTimeout(() => {
-        const values: { [key: string]: number } = {};
-        skillCategories.forEach((category) => {
-          category.skills.forEach((skill) => {
-            values[skill.name] = skill.level;
-          });
-        });
-        setAnimatedValues(values);
-      }, 500);
-
-      return () => clearTimeout(timer);
-    }
-  }, [inView]);
-
   return (
-    <section id="skills" className="py-20" ref={ref}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 tracking-tight">
-            Technical Skills
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A comprehensive toolkit built through hands-on experience and
-            continuous learning
-          </p>
-        </motion.div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-8 lg:grid-cols-12 gap-8 mb-12">
-          {techStackIcons.map((icon, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-              }}
-              className="flex flex-col justify-center items-center"
-            >
-              <Card className="w-20 h-20 rounded-full flex items-center justify-center mb-3 border border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <img src={icon.icon} alt={icon.name} className="w-10 h-10" />
-              </Card>
-              <p className="text-sm text-muted-foreground text-center font-medium">
-                {icon.name}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+    <section id="skills" className="py-24 sm:py-32">
+      <SectionHeader
+        number="04"
+        title="Skills"
+        subtitle="The MERN + AI stack I use daily — from frontend to deployment."
+      />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12"></div>
-        {/* Additional Skills */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <Card className="p-6 bg-card/50 border border-border/30 shadow-lg hover:shadow-xl transition-all duration-300">
-            <div className="text-center mb-6">
-              <h3 className="text-xl font-semibold mb-2">
-                Additional Expertise
-              </h3>
-              <p className="text-muted-foreground">
-                Professional skills that complement my technical abilities
-              </p>
-            </div>
+      <RevealItem>
+        <GlowCard innerClassName="p-6 sm:p-8">
+          <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-x-3 gap-y-8">
+            {techIcons.map(({ src, label }) => (
+              <div
+                key={label}
+                className="flex flex-col items-center gap-2.5 group"
+              >
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl border border-white/[0.08] bg-white/[0.03] flex items-center justify-center transition-colors duration-200 group-hover:border-white/15 group-hover:bg-white/[0.06]">
+                  <img
+                    src={src}
+                    alt={label}
+                    className="w-8 h-8 sm:w-9 sm:h-9 object-contain"
+                    loading="lazy"
+                    decoding="async"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <span className="text-[10px] sm:text-[11px] text-muted-foreground text-center leading-tight">
+                  {label}
+                </span>
+              </div>
+            ))}
+          </div>
 
-            <div className="flex flex-wrap justify-center gap-3">
-              {additionalSkills.map((skill, index) => (
-                <motion.div
-                  key={skill}
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{
-                    duration: 0.3,
-                    delay: 0.8 + index * 0.05,
-                  }}
-                >
-                  <Badge
-                    variant="outline"
-                    className="transition-all duration-300 ease-in-out hover:bg-primary hover:text-primary-foreground text-sm py-2 px-4 border border-border/90"
-                  >
-                    {skill}
-                  </Badge>
-                </motion.div>
+          <div className="mt-10 pt-6 border-t border-white/[0.06]">
+            <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground mb-3">
+              Also
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {softSkills.map((skill) => (
+                <span key={skill} className="chip text-[11px]">
+                  {skill}
+                </span>
               ))}
             </div>
-          </Card>
-        </motion.div>
-        {/* Skill Philosophy */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-center mt-12"
-        >
-          <Card className="p-8 max-w-3xl mx-auto bg-card/50 border border-border/30 shadow-lg hover:shadow-xl transition-all duration-300">
-            <div className="flex items-center justify-center mb-4">
-              <Palette className="h-8 w-8 text-primary" />
-            </div>
-            <h3 className="text-2xl font-semibold mb-4">
-              Continuous Growth Mindset
-            </h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Technology evolves rapidly, and so do I. My commitment to lifelong
-              learning ensures that I stay current with emerging trends and best
-              practices. Every project is an opportunity to refine existing
-              skills and acquire new ones.
-            </p>
-          </Card>
-        </motion.div>
-      </div>
+          </div>
+        </GlowCard>
+      </RevealItem>
     </section>
   );
 }

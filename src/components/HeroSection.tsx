@@ -1,212 +1,143 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Download, Github, Linkedin, Mail, MapPin } from "lucide-react";
-import Typewriter from "typewriter-effect";
+import { GlowCard } from "@/components/ui/glow-card";
+import {
+  Download,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  ArrowRight,
+  Sparkles,
+} from "lucide-react";
+
+const stats = [
+  { value: "2+", label: "Years exp." },
+  { value: "600+", label: "Mentored" },
+  { value: "10+", label: "Projects" },
+];
+
+const stack = ["React", "Node.js", "MongoDB", "TypeScript", "Gemini AI"];
 
 export function HeroSection() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  const handleDownloadResume = () => {
-    // Placeholder for resume download functionality
-    window.open("/rohith2025.pdf", "_blank");
-  };
-
   return (
-    <section
-      id="hero"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
-    >
-      {/* Background gradient */}
-      <div className="absolute inset-0 " />
-
-      {/* Floating elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-primary/20 rounded-full"
-            style={{
-              left: `${20 + i * 15}%`,
-              top: `${30 + i * 10}%`,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              opacity: [0.2, 0.8, 0.2],
-            }}
-            transition={{
-              duration: 3 + i * 0.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 50 }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-8 lg:gap-12 w-full"
-        >
-          {/* Profile Picture */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="order-1 lg:order-1 flex-shrink-0"
-          >
-            <div className="relative">
-              <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
-                <img
-                  src="/dp.jpg"
-                  alt="Rohith M - Profile Picture"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              {/* Decorative ring */}
-              <div className="absolute -inset-4 rounded-full border-2 border-primary/10 animate-pulse"></div>
+    <section id="hero" className="relative min-h-screen flex items-center pt-28 pb-20 px-5 sm:px-8">
+      <div className="max-w-6xl mx-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-5">
+          <div className="lg:col-span-7 flex flex-col justify-center space-y-8">
+            <div className="inline-flex items-center gap-2.5 w-fit chip">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-success opacity-75 status-dot" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-success" />
+              </span>
+              Available for opportunities
             </div>
-          </motion.div>
 
-          {/* Content */}
-          <div className="order-2 lg:order-2 text-center lg:text-left space-y-6 lg:space-y-8 flex-1 max-w-2xl lg:max-w-none">
-            {/* Name and introduction */}
-            <div className="space-y-4">
-              <motion.h1
-                className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight"
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                Hi, I'm{" "}
-                <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                  Rohith M
+            <div>
+              <p className="text-muted-foreground text-lg mb-3 font-medium">
+                Hey, I'm
+              </p>
+              <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05]">
+                <span className="text-gradient">Rohith M</span>
+              </h1>
+              <p className="mt-4 text-xl sm:text-2xl font-display font-semibold text-foreground/90">
+                Full Stack{" "}
+                <span className="text-primary">MERN + AI</span> Engineer
+              </p>
+            </div>
+
+            <p className="text-muted-foreground text-lg leading-relaxed max-w-xl">
+              I build AI-powered tools, real-time apps, and scalable backends at{" "}
+              <span className="text-foreground font-medium">HCL GUVI</span> —
+              from learner evaluation platforms to production MERN systems.
+            </p>
+
+            <div className="flex flex-wrap gap-2">
+              {stack.map((tech) => (
+                <span key={tech} className="chip">
+                  <Sparkles className="h-3 w-3 text-primary/70" />
+                  {tech}
                 </span>
-              </motion.h1>
-
-              {/* Animated typing text */}
-              <motion.div
-                className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-medium h-16 flex items-center justify-center lg:justify-start"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-              >
-                <Typewriter
-                  options={{
-                    strings: [
-                      "Full Stack Developer",
-                      "Mentor & Educator",
-                      "AI Integrator",
-                      "Problem Solver",
-                    ],
-                    autoStart: true,
-                    loop: true,
-                    delay: 80,
-                    deleteSpeed: 50,
-                  }}
-                />
-              </motion.div>
+              ))}
             </div>
 
-            {/* Contact info */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-muted-foreground text-sm md:text-base"
-            >
-              <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4" />
-                <span>Erode, Tamil Nadu, India</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
-                <a
-                  href="mailto:rohithm1482@gmail.com"
-                  className="hover:text-primary transition-all duration-300 ease-in-out"
-                >
-                  rohithm1482@gmail.com
-                </a>
-              </div>
-              <div className="flex items-center gap-2">
-                <Linkedin className="h-4 w-4" />
-                <a
-                  href="https://linkedin.com/in/rohithM"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Rohith M
-                </a>
-              </div>
-            </motion.div>
-
-            {/* Action buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.0 }}
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 w-full"
-            >
+            <div className="flex flex-wrap items-center gap-3 pt-2">
               <Button
-                onClick={handleDownloadResume}
                 size="lg"
-                className="ripple-effect transition-all duration-300 ease-in-out hover:scale-105 group"
+                className="rounded-full h-11 px-6 bg-primary hover:bg-primary/90 shadow-glow"
+                asChild
               >
-                <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
-                Download Resume
+                <a href="#projects">
+                  See my work
+                  <ArrowRight className="h-4 w-4" />
+                </a>
               </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="rounded-full h-11 px-6 border-white/15 bg-white/[0.03] hover:bg-white/[0.06]"
+                asChild
+              >
+                <a href="/rohithM.pdf" target="_blank" rel="noopener noreferrer">
+                  <Download className="h-4 w-4" />
+                  Resume
+                </a>
+              </Button>
+            </div>
 
-              <div className="flex items-center gap-3">
-                <Button
-                  variant="outline"
-                  size="icon"
-                  asChild
-                  className="transition-all duration-300 ease-in-out hover:scale-110"
-                >
+            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+              <span className="flex items-center gap-1.5">
+                <MapPin className="h-3.5 w-3.5 text-primary/70" />
+                Erode, India
+              </span>
+              <span className="hidden sm:inline text-white/20">|</span>
+              <div className="flex gap-1">
+                {[
+                  { Icon: Github, href: "https://github.com/rohith00016" },
+                  { Icon: Linkedin, href: "https://linkedin.com/in/rohithM" },
+                  { Icon: Mail, href: "mailto:rohithm1482@gmail.com" },
+                ].map(({ Icon, href }) => (
                   <a
-                    href="https://github.com/rohith00016"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    key={href}
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="p-2 rounded-full hover:bg-white/8 hover:text-primary transition-colors"
                   >
-                    <Github className="h-4 w-4" />
+                    <Icon className="h-4 w-4" />
                   </a>
-                </Button>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  asChild
-                  className="transition-all duration-300 ease-in-out hover:scale-110"
-                >
-                  <a
-                    href="https://linkedin.com/in/rohithM"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Linkedin className="h-4 w-4" />
-                  </a>
-                </Button>
+                ))}
               </div>
-            </motion.div>
-
-            {/* Objective */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.2 }}
-              className="max-w-2xl mx-auto lg:mx-0 text-muted-foreground text-base sm:text-lg leading-relaxed text-center lg:text-left"
-            >
-              Seeking a stable, profitable company to leverage my talents, gain
-              valuable experience, and contribute to enhancing its reputation in
-              the technology industry.
-            </motion.p>
+            </div>
           </div>
-        </motion.div>
+
+          <div className="lg:col-span-5 flex flex-col gap-4">
+            <GlowCard className="flex-1" innerClassName="p-0 overflow-hidden relative min-h-[280px] lg:min-h-0">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
+              <img
+                src="/dp.jpg"
+                alt="Rohith M"
+                className="relative w-full h-full min-h-[280px] object-cover object-top"
+              />
+              <div className="absolute bottom-0 inset-x-0 p-5 bg-gradient-to-t from-background/90 to-transparent">
+                <p className="font-display font-semibold">Rohith M</p>
+                <p className="text-sm text-muted-foreground">HCL GUVI · Chennai</p>
+              </div>
+            </GlowCard>
+
+            <div className="grid grid-cols-3 gap-3">
+              {stats.map((stat) => (
+                <GlowCard key={stat.label} innerClassName="p-4 text-center">
+                  <p className="font-display text-2xl font-bold text-gradient-subtle">
+                    {stat.value}
+                  </p>
+                  <p className="text-[11px] text-muted-foreground mt-1 uppercase tracking-wider">
+                    {stat.label}
+                  </p>
+                </GlowCard>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

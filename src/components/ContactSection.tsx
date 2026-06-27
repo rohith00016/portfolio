@@ -1,233 +1,77 @@
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Github,
-  Linkedin,
-  ExternalLink,
-  MessageCircle,
-  Calendar,
-  Coffee,
-} from "lucide-react";
+import { GlowCard } from "@/components/ui/glow-card";
+import { Mail, Phone, Github, Linkedin, MapPin, ArrowUpRight } from "lucide-react";
+import { SectionHeader } from "@/components/animations/SectionHeader";
+import { RevealItem } from "@/components/animations/AnimatedSection";
 
-const contactMethods = [
+const links = [
   {
     icon: Mail,
     label: "Email",
     value: "rohithm1482@gmail.com",
     href: "mailto:rohithm1482@gmail.com",
-    description: "Best for detailed discussions",
   },
   {
     icon: Phone,
     label: "Phone",
     value: "+91 6381800016",
     href: "tel:+916381800016",
-    description: "Quick calls and urgent matters",
   },
   {
     icon: Github,
     label: "GitHub",
-    value: "rohith00016",
+    value: "@rohith00016",
     href: "https://github.com/rohith00016",
-    description: "Check out my code and projects",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
-    value: "rohithM",
+    value: "/in/rohithM",
     href: "https://linkedin.com/in/rohithM",
-    description: "Professional networking",
   },
 ];
 
 export function ContactSection() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
   return (
-    <section id="contact" className="py-20 " ref={ref}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 tracking-tight">
-            Let's Connect
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to discuss opportunities, collaborate on projects, or just
-            have a tech chat? I'd love to hear from you!
-          </p>
-        </motion.div>
+    <section id="contact" className="py-24 sm:py-32 pb-32">
+      <SectionHeader
+        number="05"
+        title="Let's build something"
+        subtitle="Open to full-time roles, freelance projects, and collaborations."
+      />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-6"
-          >
-            <Card className="p-6 bg-card/50 border border-border/30 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-primary/10 rounded-lg">
-                  <MessageCircle className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold">Get In Touch</h3>
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+        <RevealItem className="lg:col-span-3">
+          <GlowCard innerClassName="p-8 sm:p-10 h-full relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="relative">
+              <div className="inline-flex items-center gap-2 chip mb-6 border-success/30">
+                <span className="h-2 w-2 rounded-full bg-success status-dot" />
+                <span className="text-success text-xs">Available now</span>
               </div>
-
-              <div className="space-y-4">
-                {contactMethods.map((method, index) => (
-                  <motion.a
-                    key={method.label}
-                    href={method.href}
-                    target={
-                      method.href.startsWith("http") ? "_blank" : undefined
-                    }
-                    rel={
-                      method.href.startsWith("http")
-                        ? "noopener noreferrer"
-                        : undefined
-                    }
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                    className="block p-4 rounded-lg border border-border transition-all duration-300 ease-in-out hover:border-primary/50 hover:bg-primary/5 group"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-all duration-300 ease-in-out">
-                        <method.icon className="h-5 w-5 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="font-medium">{method.label}</span>
-                          <ExternalLink className="h-3 w-3 text-muted-foreground group-hover:text-primary transition-all duration-300 ease-in-out" />
-                        </div>
-                        <p className="text-primary font-mono text-sm">
-                          {method.value}
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          {method.description}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.a>
-                ))}
-              </div>
-            </Card>
-
-            {/* Location */}
-            <Card className="p-6 bg-card/50 border border-border/30 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-primary/10 rounded-lg">
-                  <MapPin className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold">Location</h3>
-              </div>
-              <p className="text-muted-foreground mb-2">
-                Based in{" "}
-                <span className="font-medium text-foreground">
-                  Erode, Tamil Nadu, India
-                </span>
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Open to remote opportunities and willing to relocate for the
-                right position.
-              </p>
-            </Card>
-          </motion.div>
-
-          {/* Call to Action & Availability */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-6"
-          >
-            {/* Availability */}
-            <Card className="p-6 bg-card/50 border border-border/30 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-success/10 rounded-lg">
-                  <Calendar className="h-6 w-6 text-success" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold">Current Status</h3>
-                  <Badge
-                    variant="secondary"
-                    className="bg-success/10 text-success border-success/20 mt-1 p-2"
-                  >
-                    Available for Opportunities
-                  </Badge>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-medium mb-2">What I'm Looking For:</h4>
-                  <ul className="space-y-2 text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
-                      <span>Full-time development positions</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
-                      <span>Freelance and consulting projects</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
-                      <span>Collaboration opportunities</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
-                      <span>Mentoring and training roles</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="pt-4 border-t border-border">
-                  <p className="text-sm text-muted-foreground">
-                    <strong>Response Time:</strong> Usually within 24 hours
-                  </p>
-                </div>
-              </div>
-            </Card>
-
-            {/* Coffee Chat CTA */}
-            <Card className="p-6 bg-card/50 border border-border/30 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
-              <div className="flex items-center justify-center mb-4">
-                <Coffee className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">
-                Let's Have a Coffee Chat!
+              <h3 className="font-display text-2xl sm:text-3xl font-bold mb-3">
+                Have a project in mind?
               </h3>
-              <p className="text-muted-foreground mb-6">
-                Whether you're looking to hire, collaborate, or just want to
-                discuss the latest in web development, I'm always excited to
-                connect with fellow tech enthusiasts.
+              <p className="text-muted-foreground mb-8 max-w-md leading-relaxed">
+                Whether it's a full-time role, a freelance build, or just a tech
+                conversation — I'd love to hear from you.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button
-                  className="flex-1 transition-all duration-300 ease-in-out hover:scale-105 h-12"
+                  size="lg"
+                  className="rounded-full h-12 px-7 bg-primary hover:bg-primary/90 shadow-glow"
                   asChild
                 >
-                  <a href="mailto:rohithm1482@gmail.com?subject=Let's Connect!">
-                    <Mail className="h-4 w-4 mr-2 " />
-                    Send Email
+                  <a href="mailto:rohithm1482@gmail.com?subject=Let's work together">
+                    <Mail className="h-4 w-4" />
+                    Send an email
+                    <ArrowUpRight className="h-4 w-4" />
                   </a>
                 </Button>
                 <Button
+                  size="lg"
                   variant="outline"
-                  className="flex-1 transition-all duration-300 ease-in-out hover:scale-105 h-12"
+                  className="rounded-full h-12 px-7 border-white/15 bg-white/[0.03]"
                   asChild
                 >
                   <a
@@ -235,27 +79,51 @@ export function ContactSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Linkedin className="h-4 w-4 mr-2" />
-                    LinkedIn Message
+                    <Linkedin className="h-4 w-4" />
+                    LinkedIn
                   </a>
                 </Button>
               </div>
-            </Card>
-          </motion.div>
-        </div>
+            </div>
+          </GlowCard>
+        </RevealItem>
 
-        {/* Footer */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-center mt-16 pt-8 border-t border-border"
-        >
-          <p className="text-sm text-muted-foreground mt-2">
-            © 2024 Rohith M. All rights reserved.
-          </p>
-        </motion.div>
+        <RevealItem delay={0.08} className="lg:col-span-2">
+          <GlowCard innerClassName="p-6 h-full flex flex-col gap-3">
+            {links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                rel={
+                  link.href.startsWith("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+                className="flex items-center gap-4 p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 group"
+              >
+                <div className="p-2.5 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
+                  <link.icon className="h-4 w-4" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs text-muted-foreground">{link.label}</p>
+                  <p className="text-sm font-medium truncate">{link.value}</p>
+                </div>
+                <ArrowUpRight className="h-4 w-4 text-muted-foreground ml-auto opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all" />
+              </a>
+            ))}
+
+            <div className="mt-auto pt-3 flex items-center gap-2 text-sm text-muted-foreground">
+              <MapPin className="h-3.5 w-3.5 text-primary/70" />
+              Erode-638453, Tamil Nadu
+            </div>
+          </GlowCard>
+        </RevealItem>
       </div>
+
+      <p className="text-center text-xs text-muted-foreground mt-16 font-mono">
+        © 2026 Rohith M — Built with React & TypeScript
+      </p>
     </section>
   );
 }
