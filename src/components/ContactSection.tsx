@@ -27,7 +27,7 @@ const links = [
     icon: Linkedin,
     label: "LinkedIn",
     value: "/in/rohithM",
-    href: "https://linkedin.com/in/rohithM",
+    href: "https://linkedin.com/in/rohithm1482",
   },
 ];
 
