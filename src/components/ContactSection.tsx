@@ -75,7 +75,7 @@ export function ContactSection() {
                   asChild
                 >
                   <a
-                    href="https://linkedin.com/in/rohithM"
+                    href="https://linkedin.com/in/rohithm1482"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
