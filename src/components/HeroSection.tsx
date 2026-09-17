@@ -93,7 +93,7 @@ export function HeroSection() {
               <div className="flex gap-1">
                 {[
                   { Icon: Github, href: "https://github.com/rohith00016" },
-                  { Icon: Linkedin, href: "https://linkedin.com/in/rohithM" },
+                  { Icon: Linkedin, href: "https://linkedin.com/in/rohithm1482" },
                   { Icon: Mail, href: "mailto:rohithm1482@gmail.com" },
                 ].map(({ Icon, href }) => (
                   <a
