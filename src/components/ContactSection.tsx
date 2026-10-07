@@ -26,7 +26,7 @@ const links = [
   {
     icon: Linkedin,
     label: "LinkedIn",
-    value: "/in/rohithM",
+    value: "/in/rohithm1482",
     href: "https://linkedin.com/in/rohithm1482",
   },
 ];
@@ -36,8 +36,8 @@ export function ContactSection() {
     <section id="contact" className="py-24 sm:py-32 pb-32">
       <SectionHeader
         number="05"
-        title="Let's build something"
-        subtitle="Open to full-time roles, freelance projects, and collaborations."
+        title="Get in touch"
+        subtitle="Actively exploring full-time Full Stack, MERN, and GenAI software engineering opportunities."
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
@@ -47,14 +47,13 @@ export function ContactSection() {
             <div className="relative">
               <div className="inline-flex items-center gap-2 chip mb-6 border-success/30">
                 <span className="h-2 w-2 rounded-full bg-success status-dot" />
-                <span className="text-success text-xs">Available now</span>
+                <span className="text-success text-xs font-medium">Open to Full-Time Roles</span>
               </div>
               <h3 className="font-display text-2xl sm:text-3xl font-bold mb-3">
-                Have a project in mind?
+                Looking for a Full Stack Engineer?
               </h3>
-              <p className="text-muted-foreground mb-8 max-w-md leading-relaxed">
-                Whether it's a full-time role, a freelance build, or just a tech
-                conversation — I'd love to hear from you.
+              <p className="text-muted-foreground mb-8 max-w-md leading-relaxed text-sm sm:text-base">
+                I'm actively seeking full-time engineering roles where I can contribute to scalable production systems, high-leverage AI workflows, and impactful products. Let's discuss how I can add value to your team.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button
@@ -62,9 +61,9 @@ export function ContactSection() {
                   className="rounded-full h-12 px-7 bg-primary hover:bg-primary/90 shadow-glow"
                   asChild
                 >
-                  <a href="mailto:rohithm1482@gmail.com?subject=Let's work together">
+                  <a href="mailto:rohithm1482@gmail.com?subject=Full-Time%20Opportunity%20-%20Rohith%20M">
                     <Mail className="h-4 w-4" />
-                    Send an email
+                    Get in touch
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
                 </Button>

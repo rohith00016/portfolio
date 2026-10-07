@@ -35,7 +35,7 @@ const softSkills = [
   "Razorpay",
   "JWT & RBAC",
   "RAG",
-  "Mentoring",
+  "Microservices",
   "System Design",
 ];
 

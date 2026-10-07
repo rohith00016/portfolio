@@ -3,45 +3,44 @@ import { GlowCard } from "@/components/ui/glow-card";
 import { SectionHeader } from "@/components/animations/SectionHeader";
 import { RevealItem } from "@/components/animations/AnimatedSection";
 
-const experiences = [
+interface ExperienceItem {
+  title: string;
+  company: string;
+  location: string;
+  duration: string;
+  type: string;
+  progression?: string;
+  highlights: string[];
+  skills: string[];
+}
+
+const experiences: ExperienceItem[] = [
   {
-    title: "Associate - MERN Tech Support",
+    title: "Associate Full Stack Developer L&D",
     company: "HCL GUVI",
     location: "Chennai",
-    duration: "Jul 2025 – Present",
+    duration: "Jan 2024 – Present",
     type: "Full-time",
+    progression: "Tech Support Intern → Associate Full Stack Developer L&D",
     highlights: [
-      "Invoice management platform with GUVI API SSO & role-based workflows",
-      "Internal MERN apps and AI-powered automation tools",
-      "Audit-based billing approval for external mentors",
+      "Engineered an AI-powered resume and portfolio evaluation platform using Node.js, Puppeteer, Gemini AI, MongoDB, and AWS SES, reducing manual evaluation effort by ~95% through automated analysis, scoring, feedback generation, and email delivery.",
+      "Developed the SQLKATA MERN prototype, implementing real-time SQL execution, automated test validation, and admin workflows; the POC was subsequently adopted by the development team as the foundation for the production product.",
+      "Developed an internal invoice management platform using React, Node.js, Express, MongoDB, JWT, RBAC, and TanStack Query, integrating internal APIs for automated session synchronization, approval workflows, audit tracking, and manual worklog management.",
+      "Engineered an AI-based project evaluation platform that analyzes GitHub repositories against PRD requirements using Gemini AI and custom evaluation rubrics, generating structured scores, identifying security and architectural issues, and suggesting code-level fixes.",
+      "Conducted comprehensive technical code reviews and root-cause analyses across production MERN services, resolving complex application, API, database, authentication, and deployment issues.",
     ],
-    skills: ["React", "Node.js", "MongoDB", "JWT", "RBAC"],
-  },
-  {
-    title: "Skill Development Engineer",
-    company: "HCL GUVI",
-    location: "Chennai",
-    duration: "Jul 2024 – Jul 2025",
-    type: "Full-time",
-    highlights: [
-      "AI resume evaluator with Gemini AI — 90% less manual review",
-      "Mentored 600+ learners in React, Node, MongoDB, Redux",
-      "Training on scalable system design & production MERN",
+    skills: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Gemini AI",
+      "Puppeteer",
+      "AWS SES",
+      "TanStack Query",
+      "JWT & RBAC",
+      "REST APIs",
     ],
-    skills: ["Gemini AI", "React", "Node.js", "Redux"],
-  },
-  {
-    title: "Tech Support Intern",
-    company: "HCL GUVI",
-    location: "Chennai",
-    duration: "Jan 2024 – Jul 2024",
-    type: "Internship",
-    highlights: [
-      "SQLKATA POC — real-time SQL assessment platform",
-      "MERN stack support for learners & developers",
-      "POC adopted as production foundation",
-    ],
-    skills: ["MERN", "SQL", "REST APIs"],
   },
 ];
 
@@ -51,7 +50,7 @@ export function ExperienceSection() {
       <SectionHeader
         number="02"
         title="Experience"
-        subtitle="2+ years at HCL GUVI — from intern to building AI-powered production tools."
+        subtitle="Full stack engineering at HCL GUVI — building autonomous GenAI workflows, assessment engines, and scalable internal platforms."
       />
 
       <div className="relative space-y-5 pl-6 sm:pl-8">
@@ -70,6 +69,12 @@ export function ExperienceSection() {
                     <p className="text-muted-foreground mt-1">
                       {exp.company} · {exp.location}
                     </p>
+                    {exp.progression && (
+                      <p className="text-xs text-primary/90 font-mono mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20">
+                        <span className="text-muted-foreground font-sans">Progression:</span>
+                        <span>{exp.progression}</span>
+                      </p>
+                    )}
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
                     <span className="font-mono text-xs text-muted-foreground">
@@ -84,21 +89,21 @@ export function ExperienceSection() {
                   </div>
                 </div>
 
-                <ul className="space-y-2.5 mb-5">
+                <ul className="space-y-3 mb-6">
                   {exp.highlights.map((h) => (
                     <li
                       key={h}
-                      className="text-sm text-muted-foreground flex gap-2.5"
+                      className="text-sm sm:text-base text-muted-foreground/90 flex gap-3 leading-relaxed"
                     >
-                      <span className="text-primary shrink-0">→</span>
-                      {h}
+                      <span className="text-primary shrink-0 mt-0.5">→</span>
+                      <span>{h}</span>
                     </li>
                   ))}
                 </ul>
 
                 <div className="flex flex-wrap gap-2">
                   {exp.skills.map((skill) => (
-                    <span key={skill} className="chip text-[11px]">
+                    <span key={skill} className="chip text-xs">
                       {skill}
                     </span>
                   ))}

@@ -12,7 +12,7 @@ import {
 
 const stats = [
   { value: "2+", label: "Years exp." },
-  { value: "600+", label: "Mentored" },
+  { value: "4+", label: "Internal Apps" },
   { value: "10+", label: "Projects" },
 ];
 
@@ -41,14 +41,14 @@ export function HeroSection() {
               </h1>
               <p className="mt-4 text-xl sm:text-2xl font-display font-semibold text-foreground/90">
                 Full Stack{" "}
-                <span className="text-primary">MERN + AI</span> Engineer
+                <span className="text-primary">MERN + GenAI</span> Engineer
               </p>
             </div>
 
             <p className="text-muted-foreground text-lg leading-relaxed max-w-xl">
-              I build AI-powered tools, real-time apps, and scalable backends at{" "}
+              I build autonomous GenAI workflows, real-time assessment engines, and scalable backends at{" "}
               <span className="text-foreground font-medium">HCL GUVI</span> —
-              from learner evaluation platforms to production MERN systems.
+              cutting manual evaluation effort by ~95% and shipping production MERN systems.
             </p>
 
             <div className="flex flex-wrap gap-2">
